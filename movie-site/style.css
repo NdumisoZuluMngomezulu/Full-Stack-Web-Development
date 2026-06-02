@@ -1,0 +1,4 @@
+body { font-family: system-ui; max-width: 650px; margin: 2rem auto; padding: 0 1rem; }
+form { display: flex; gap: 8px; margin-bottom: 1rem; }
+input, button { padding: 8px; }
+li { padding: 6px 0; border-bottom: 1px solid #eee; }
