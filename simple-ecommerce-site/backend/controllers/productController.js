@@ -6,7 +6,8 @@ const Order = require('../models/Order');exports.getProducts = async (req, res) 
 exports.addToCart = async (req, res) => {
   const { productId, quantity = 1 } = req.body;
   const user = req.user;  const product = await Product.findById(productId);
-  if (!product) return res.status(404).json({ error: 'Product not found' });  const cartItem = user.cart.find(item => item.productId.toString() === productId);
+  if (!product) return res.status(404).json({ error: 'Product not found' });  
+  const cartItem = user.cart.find(item => item.productId.toString() === productId);
   if (cartItem) {
     cartItem.quantity += quantity;
   } else {
@@ -33,12 +34,14 @@ exports.updateCart = async (req, res) => {
 };
 exports.checkout = async (req, res) => {
   const user = req.user;
-  if (user.cart.length === 0) return res.status(400).json({ error: 'Cart is empty' });  const order = new Order({
+  if (user.cart.length === 0) return res.status(400).json({ error: 'Cart is empty' });  
+  const order = new Order({
     userId: user._id,
     products: user.cart,
     status: 'Pending'
   });  
   await order.save();
   user.cart = [];
-  await user.save();  res.json({ message: 'Order placed', order });
+  await user.save();  
+  res.json({ message: 'Order placed', order });
 };
