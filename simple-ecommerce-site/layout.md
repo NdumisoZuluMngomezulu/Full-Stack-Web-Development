@@ -1,0 +1,13 @@
+bash
+ecommerce/
+  /models
+    User.js
+    Product.js
+  /controllers
+    authController.js
+    productController.js
+  /routes
+    authRoutes.js
+    productRoutes.js
+  server.js
+  .env

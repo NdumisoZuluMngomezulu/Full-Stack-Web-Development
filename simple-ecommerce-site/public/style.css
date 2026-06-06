@@ -1,0 +1,23 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 1em;
+  width: 200px;
+}
+
+button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
