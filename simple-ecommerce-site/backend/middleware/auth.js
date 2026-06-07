@@ -10,4 +10,5 @@ const User = require('../models/User');const auth = async (req, res, next) => {
   } catch (err) {
     res.status(401).json({ error: 'Invalid token' });
   }
-};module.exports = auth;
+};
+module.exports = auth;
