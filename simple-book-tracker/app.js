@@ -13,7 +13,7 @@ async function loadBooks(){
     });
 }
 
-form.addEventListener('submit', async e => {
+form.addEventListener('submit', async e => {   
     e.preventDefault();
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;

@@ -49,3 +49,17 @@ exports.createAppointment = async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+
+//PUT update appointment
+exports.updateAppointment = async (req, res) => {
+    try {
+        let appointment = await Appointment.findById(req.params.id);
+        if (!appointment) return res.status(400).json({ msg: 'Appointment not found'});
+
+        //chek=ck permission
+        const isDoctor = req.user.role === 'doctor' && appointment.doctorId.toString() === req.user.id;
+        const isPatient = req.user.role === 'patient' && appointment.patientId.toString() ===req.user.id;
+        
+        if (!isDoctor && )
+    }
+};
