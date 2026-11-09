@@ -1,5 +1,8 @@
+import { useState } from 'react'
+import Login from './components/Login'
 import TaskList from './components/TaskList'
 
+// ...keep your sampleTasks array here...
 const sampleTasks = [
   {
     id: 1,
@@ -37,12 +40,33 @@ const sampleTasks = [
 ]
 
 function App() {
+  const [auth, setAuth] = useState(null) // null, or { token, user }
+
+  if (!auth) {
+    return (
+      <div className="app">
+        <h1>Team Tasks</h1>
+        <Login onLogin={setAuth} />
+      </div>
+    )
+  }
+
   return (
-    <div className='app'>
-      <h1>Team Tasks</h1>
-      <TaskList tasks={sampleTasks}/>
+    <div className="app">
+      <header className="top-bar">
+        <h1>Team Tasks</h1>
+        <div>
+          <span>
+            {auth.user.username} <em>({auth.user.role})</em>
+          </span>
+          <button onClick={() => setAuth(null)}>Log out</button>
+        </div>
+      </header>
+
+      <TaskList tasks={sampleTasks} />
     </div>
   )
 }
 
 export default App
+
