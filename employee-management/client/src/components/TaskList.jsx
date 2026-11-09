@@ -13,3 +13,5 @@ function TaskList({ tasks }) {
         </ul>
     )
 }
+
+export default TaskList
